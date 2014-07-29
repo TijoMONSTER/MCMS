@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "MagicalCreature.h"
 @interface ViewController ()
 
 @end
@@ -17,13 +17,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-}
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    MagicalCreature *fairy = [[MagicalCreature alloc] init];
+    fairy.name = @"Fairy";
+    fairy.description = @"It's a super powerful fairy!";
+    MagicalCreature *unicorn = [[MagicalCreature alloc] init];
+    unicorn.name = @"Unicorn";
+    unicorn.description = @"Talking about unicorns, they were very tough creatures!";
+    MagicalCreature *kraken = [[MagicalCreature alloc] init];
+    kraken.name = @"Kraken";
+    kraken.description = @"It's a kraken, 'nuff said";
+
+    self.creatures = [NSMutableArray arrayWithObjects:fairy, unicorn, kraken, nil];
 }
 
 @end
