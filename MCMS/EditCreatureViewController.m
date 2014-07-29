@@ -48,12 +48,6 @@
         self.nameTextField.hidden = YES;
         [self.nameTextField resignFirstResponder];
     }
-
-
-    // Change title from Edit to Done
-//    sender.title = [sender.title isEqualToString:@"Edit"] ? @"Done" : @"Edit";
-
-
 }
 
 #pragma mark Helper methods
