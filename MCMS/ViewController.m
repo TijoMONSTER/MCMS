@@ -13,7 +13,8 @@
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UITextField *addCreatureTextField;
+@property (weak, nonatomic) IBOutlet UITextField *addCreatureNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *addCreatureDescriptionTextField;
 
 @end
 
@@ -23,9 +24,16 @@
 {
     [super viewDidLoad];
 
-    MagicalCreature *fairy = [[MagicalCreature alloc] initWithName:@"Fairy" description:@"It's a super powerful fairy!"];
-    MagicalCreature *unicorn = [[MagicalCreature alloc] initWithName:@"Unicorn" description:@"Talking about unicorns, they were very tough creatures!"];
-    MagicalCreature *kraken = [[MagicalCreature alloc] initWithName:@"Kraken" description:@"It's a kraken, 'nuff said."];
+    MagicalCreature *fairy = [[MagicalCreature alloc] initWithName:@"Fairy"
+                                                       description:@"It's a super powerful fairy!"
+                                                           picture:[UIImage imageNamed:@"fairy"]];
+
+    MagicalCreature *unicorn = [[MagicalCreature alloc] initWithName:@"Unicorn"
+                                                         description:@"Talking about unicorns, they were very tough creatures!" picture:[UIImage
+                                                          imageNamed:@"unicorn"]];
+
+    MagicalCreature *kraken = [[MagicalCreature alloc] initWithName:@"Kraken"
+                                                        description:@"It's a kraken, 'nuff said." picture:[UIImage imageNamed:@"kraken"]];
 
     self.creatures = [NSMutableArray arrayWithObjects:fairy, unicorn, kraken, nil];
 }
@@ -49,10 +57,14 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
 
     cell.textLabel.text = creature.name;
+    cell.detailTextLabel.text = creature.description;
+    cell.imageView.image = creature.picture;
+
 
     return cell;
 }
 #pragma mark UITableViewDelegate
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
@@ -70,22 +82,24 @@
 
 - (IBAction)onAddCreatureButtonPressed:(UIBarButtonItem *)sender
 {
-    if ([self.addCreatureTextField.text length] > 0) {
+    if ([self.addCreatureNameTextField.text length] > 0 && [self.addCreatureDescriptionTextField.text length] > 0) {
 
         // create a new creature and add it to creatures array
         MagicalCreature *newCreature = [[MagicalCreature alloc] init];
-        newCreature.name = self.addCreatureTextField.text;
-        newCreature.description = @"No description... yet.";
+        newCreature.name = self.addCreatureNameTextField.text;
+        newCreature.description = self.addCreatureDescriptionTextField.text;
 
         [self.creatures addObject:newCreature];
 
         [self.tableView reloadData];
 
         // reset textfield
-        self.addCreatureTextField.text = @"";
+        self.addCreatureNameTextField.text = @"";
+        self.addCreatureDescriptionTextField.text = @"";
     }
 
-    [self.addCreatureTextField resignFirstResponder];
+    [self.addCreatureDescriptionTextField resignFirstResponder];
+    [self.addCreatureNameTextField resignFirstResponder];
 }
 
 #pragma Segue
