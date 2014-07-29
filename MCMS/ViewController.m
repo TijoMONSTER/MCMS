@@ -30,6 +30,12 @@
     self.creatures = [NSMutableArray arrayWithObjects:fairy, unicorn, kraken, nil];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
+
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -52,7 +58,6 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
-
 #pragma mark UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -70,12 +75,13 @@
         // create a new creature and add it to creatures array
         MagicalCreature *newCreature = [[MagicalCreature alloc] init];
         newCreature.name = self.addCreatureTextField.text;
-
         newCreature.description = @"No description... yet.";
+
         [self.creatures addObject:newCreature];
 
         [self.tableView reloadData];
 
+        // reset textfield
         self.addCreatureTextField.text = @"";
     }
 
@@ -91,9 +97,7 @@
 
         NSIndexPath *selectedCellIndexPath = [self.tableView indexPathForSelectedRow];
         MagicalCreature *selectedCreature = [self.creatures objectAtIndex: selectedCellIndexPath.row];
-
-        destinationVC.name = selectedCreature.name;
-        destinationVC.description = selectedCreature.description;
+        destinationVC.creature = selectedCreature;
     }
 }
 

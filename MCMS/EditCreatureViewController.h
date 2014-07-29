@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MagicalCreature.h"
 
 @interface EditCreatureViewController : UIViewController
 
-@property NSString *name;
-@property NSString *description;
-
+@property MagicalCreature *creature;
 
 @end
