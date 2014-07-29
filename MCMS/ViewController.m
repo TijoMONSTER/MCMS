@@ -8,9 +8,11 @@
 
 #import "ViewController.h"
 #import "MagicalCreature.h"
+#import "EditCreatureViewController.h"
+
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *creatureTableView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *addCreatureTextField;
 
 @end
@@ -23,7 +25,7 @@
 
     MagicalCreature *fairy = [[MagicalCreature alloc] initWithName:@"Fairy" description:@"It's a super powerful fairy!"];
     MagicalCreature *unicorn = [[MagicalCreature alloc] initWithName:@"Unicorn" description:@"Talking about unicorns, they were very tough creatures!"];
-    MagicalCreature *kraken = [[MagicalCreature alloc] initWithName:@"Kraken" description:@"It's a kraken, 'nuff said"];
+    MagicalCreature *kraken = [[MagicalCreature alloc] initWithName:@"Kraken" description:@"It's a kraken, 'nuff said."];
 
     self.creatures = [NSMutableArray arrayWithObjects:fairy, unicorn, kraken, nil];
 }
@@ -44,8 +46,20 @@
 
     return cell;
 }
+#pragma mark UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
 
 #pragma mark UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self onAddCreatureButtonPressed:nil];
+    return YES;
+}
 
 #pragma mark IBActions
 
@@ -53,17 +67,34 @@
 {
     if ([self.addCreatureTextField.text length] > 0) {
 
+        // create a new creature and add it to creatures array
         MagicalCreature *newCreature = [[MagicalCreature alloc] init];
         newCreature.name = self.addCreatureTextField.text;
+
         newCreature.description = @"No description... yet.";
         [self.creatures addObject:newCreature];
 
-        [self.creatureTableView reloadData];
+        [self.tableView reloadData];
 
         self.addCreatureTextField.text = @"";
     }
 
     [self.addCreatureTextField resignFirstResponder];
+}
+
+#pragma Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ShowCreatureSegue"]) {
+        EditCreatureViewController *destinationVC = (EditCreatureViewController *) segue.destinationViewController;
+
+        NSIndexPath *selectedCellIndexPath = [self.tableView indexPathForSelectedRow];
+        MagicalCreature *selectedCreature = [self.creatures objectAtIndex: selectedCellIndexPath.row];
+
+        destinationVC.name = selectedCreature.name;
+        destinationVC.description = selectedCreature.description;
+    }
 }
 
 

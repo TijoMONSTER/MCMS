@@ -20,5 +20,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    self.nameLabel.text = self.name;
+    self.descriptionLabel.text = self.description;
 }
 @end

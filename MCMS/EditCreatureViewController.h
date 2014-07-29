@@ -10,4 +10,8 @@
 
 @interface EditCreatureViewController : UIViewController
 
+@property NSString *name;
+@property NSString *description;
+
+
 @end
