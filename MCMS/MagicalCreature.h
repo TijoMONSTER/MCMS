@@ -13,4 +13,6 @@
 @property NSString *name;
 @property NSString *description;
 
+- (instancetype) initWithName:(NSString *)name description:(NSString *)description;
+
 @end
