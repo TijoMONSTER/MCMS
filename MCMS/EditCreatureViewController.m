@@ -42,20 +42,13 @@
         sender.title = @"Edit";
 
         // set the name
-        [self setCreatureNameAndUpdateLabel:self.nameTextField.text];
+        self.creature.name = self.nameTextField.text;
+        self.nameLabel.text = self.creature.name;
 
         // hide the textField
         self.nameTextField.hidden = YES;
         [self.nameTextField resignFirstResponder];
     }
-}
-
-#pragma mark Helper methods
-
-- (void)setCreatureNameAndUpdateLabel:(NSString *)name
-{
-    self.creature.name = name;
-    self.nameLabel.text = self.creature.name;
 }
 
 @end
