@@ -96,13 +96,17 @@
         self.nameTextField.hidden = NO;
         self.nameTextField.text = self.creature.name;
 
+		// hide the labels
+		self.nameLabel.hidden = YES;
+		self.descriptionLabel.hidden = YES;
+
         self.descriptionTextView.hidden = NO;
         self.descriptionTextView.text = self.creature.description;
     }
     // click on done
     else {
         sender.title = @"Edit";
-
+	
         // set the name
         self.creature.name = self.nameTextField.text;
         self.nameLabel.text = self.creature.name;
@@ -110,6 +114,10 @@
         // set the description
         self.creature.description = self.descriptionTextView.text;
         self.descriptionLabel.text = self.creature.description;
+
+		// show the labels
+		self.nameLabel.hidden = NO;
+		self.descriptionLabel.hidden = NO;
 
         // hide the textField and textview
         self.nameTextField.hidden = YES;
