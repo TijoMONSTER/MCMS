@@ -8,13 +8,16 @@
 
 #import "ViewController.h"
 #import "MagicalCreature.h"
-#import "EditCreatureViewController.h"
+#import "CreatureViewController.h"
+#import "BattleAccessory.h"
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *addCreatureNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *addCreatureDescriptionTextField;
+
+@property NSArray *availableBattleAccessories;
 
 @end
 
@@ -24,6 +27,7 @@
 {
     [super viewDidLoad];
 
+    // Add creatures
     MagicalCreature *fairy = [[MagicalCreature alloc] initWithName:@"Fairy"
                                                        description:@"It's a super powerful fairy!"
                                                            picture:[UIImage imageNamed:@"fairy"]];
@@ -36,6 +40,13 @@
                                                         description:@"It's a kraken, 'nuff said." picture:[UIImage imageNamed:@"kraken"]];
 
     self.creatures = [NSMutableArray arrayWithObjects:fairy, unicorn, kraken, nil];
+
+    // Add battle accessories
+    BattleAccessory *rock = [[BattleAccessory alloc] initWithName:@"Rock" points:5];
+    BattleAccessory *paper = [[BattleAccessory alloc] initWithName:@"Paper" points:3];
+    BattleAccessory *scissors = [[BattleAccessory alloc] initWithName:@"Scissors" points:4];
+
+    self.availableBattleAccessories = @[rock, paper, scissors];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -107,11 +118,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"ShowCreatureSegue"]) {
-        EditCreatureViewController *destinationVC = (EditCreatureViewController *) segue.destinationViewController;
+        CreatureViewController *destinationVC = (CreatureViewController *) segue.destinationViewController;
 
         NSIndexPath *selectedCellIndexPath = [self.tableView indexPathForSelectedRow];
         MagicalCreature *selectedCreature = [self.creatures objectAtIndex: selectedCellIndexPath.row];
         destinationVC.creature = selectedCreature;
+        destinationVC.availableBattleAccessories = self.availableBattleAccessories;
     }
 }
 

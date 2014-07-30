@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "MagicalCreature.h"
 
-@interface EditCreatureViewController : UIViewController
+@interface CreatureViewController : UIViewController
 
 @property MagicalCreature *creature;
+
+@property NSArray *availableBattleAccessories;
 
 @end

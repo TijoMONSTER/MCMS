@@ -23,7 +23,9 @@
 		2C5B2B5A19881FE9004816B3 /* MCMSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B2B5919881FE9004816B3 /* MCMSTests.m */; };
 		2C5B2B6419882178004816B3 /* CheckMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C5B2B6319882178004816B3 /* CheckMate.framework */; };
 		2C5B2B67198821C8004816B3 /* MagicalCreature.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B2B66198821C8004816B3 /* MagicalCreature.m */; };
-		2C5B2B6A19882D57004816B3 /* EditCreatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B2B6919882D57004816B3 /* EditCreatureViewController.m */; };
+		2C5B2B6A19882D57004816B3 /* CreatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B2B6919882D57004816B3 /* CreatureViewController.m */; };
+		2C5B2B6D19885A58004816B3 /* BattleAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B2B6C19885A58004816B3 /* BattleAccessory.m */; };
+		2C5B2B7019888008004816B3 /* BattleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B2B6F19888008004816B3 /* BattleViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,8 +61,12 @@
 		2C5B2B6319882178004816B3 /* CheckMate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CheckMate.framework; sourceTree = "<group>"; };
 		2C5B2B65198821C8004816B3 /* MagicalCreature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalCreature.h; sourceTree = "<group>"; };
 		2C5B2B66198821C8004816B3 /* MagicalCreature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagicalCreature.m; sourceTree = "<group>"; };
-		2C5B2B6819882D57004816B3 /* EditCreatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditCreatureViewController.h; path = MCMS/EditCreatureViewController.h; sourceTree = "<group>"; };
-		2C5B2B6919882D57004816B3 /* EditCreatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditCreatureViewController.m; path = MCMS/EditCreatureViewController.m; sourceTree = "<group>"; };
+		2C5B2B6819882D57004816B3 /* CreatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreatureViewController.h; path = MCMS/CreatureViewController.h; sourceTree = "<group>"; };
+		2C5B2B6919882D57004816B3 /* CreatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreatureViewController.m; path = MCMS/CreatureViewController.m; sourceTree = "<group>"; };
+		2C5B2B6B19885A58004816B3 /* BattleAccessory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BattleAccessory.h; path = MCMS/BattleAccessory.h; sourceTree = "<group>"; };
+		2C5B2B6C19885A58004816B3 /* BattleAccessory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BattleAccessory.m; path = MCMS/BattleAccessory.m; sourceTree = "<group>"; };
+		2C5B2B6E19888008004816B3 /* BattleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BattleViewController.h; path = MCMS/BattleViewController.h; sourceTree = "<group>"; };
+		2C5B2B6F19888008004816B3 /* BattleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BattleViewController.m; path = MCMS/BattleViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,8 +97,12 @@
 		2C5B2B2219881FE9004816B3 = {
 			isa = PBXGroup;
 			children = (
-				2C5B2B6819882D57004816B3 /* EditCreatureViewController.h */,
-				2C5B2B6919882D57004816B3 /* EditCreatureViewController.m */,
+				2C5B2B6B19885A58004816B3 /* BattleAccessory.h */,
+				2C5B2B6C19885A58004816B3 /* BattleAccessory.m */,
+				2C5B2B6E19888008004816B3 /* BattleViewController.h */,
+				2C5B2B6F19888008004816B3 /* BattleViewController.m */,
+				2C5B2B6819882D57004816B3 /* CreatureViewController.h */,
+				2C5B2B6919882D57004816B3 /* CreatureViewController.m */,
 				2C5B2B3419881FE9004816B3 /* MCMS */,
 				2C5B2B5319881FE9004816B3 /* MCMSTests */,
 				2C5B2B2D19881FE9004816B3 /* Frameworks */,
@@ -264,7 +274,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C5B2B4519881FE9004816B3 /* ViewController.m in Sources */,
-				2C5B2B6A19882D57004816B3 /* EditCreatureViewController.m in Sources */,
+				2C5B2B7019888008004816B3 /* BattleViewController.m in Sources */,
+				2C5B2B6A19882D57004816B3 /* CreatureViewController.m in Sources */,
+				2C5B2B6D19885A58004816B3 /* BattleAccessory.m in Sources */,
 				2C5B2B67198821C8004816B3 /* MagicalCreature.m in Sources */,
 				2C5B2B3F19881FE9004816B3 /* AppDelegate.m in Sources */,
 				2C5B2B3B19881FE9004816B3 /* main.m in Sources */,

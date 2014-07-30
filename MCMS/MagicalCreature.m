@@ -17,7 +17,10 @@
     self.description = description;
     self.picture = picture;
 
+    self.accessories = [NSMutableArray array];
+
     return self;
 }
+
 
 @end
